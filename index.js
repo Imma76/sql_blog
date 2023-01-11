@@ -1,8 +1,10 @@
 import 'express-async-errors';
 import express from 'express';
-
+import dotenv from 'dotenv';
 import middlewares from './middlewares/index.middlewares.js'
 const app = express()
+
+dotenv.config();
 
 
 middlewares(app)
