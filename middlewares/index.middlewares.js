@@ -2,7 +2,7 @@ import sequelize from "../config/db.config.js"
 import indexRouter from "../routes/index.routes.js"
 import express from 'express';
 import errorHandler from "./error.middlewares.js";
-import Post from "../models/post.model.js";
+
 
 const middlewares = (app) => {
     
