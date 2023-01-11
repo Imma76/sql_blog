@@ -17,7 +17,12 @@ class PostControllers{
         }).catch(err=>{
             return res.status(500).send({ status: false, message: err });
         })
-        
+    }
+
+    async getAllPosts(req, res) {
+        const allPost = Post.findAll().then(val=>{
+            return res.status(200).send({ status: true, data: val });
+        })
     }
 }
 

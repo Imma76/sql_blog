@@ -4,7 +4,8 @@ import postControllers from '../controllers/post.controllers.js';
 const postRouter = express.Router();
 
 postRouter.post('/', postControllers.createNewPost);
-postRouter.post('/:id', postControllers.findPostById);
+postRouter.get('/:id', postControllers.findPostById);
+postRouter.get('/', postControllers.getAllPosts);
 
 
 export default postRouter;

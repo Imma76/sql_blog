@@ -1,6 +1,7 @@
 import sequelize from "../config/db.config.js"
 import indexRouter from "../routes/index.routes.js"
 import express from 'express';
+import errorHandler from "./error.middlewares.js";
 
 const middlewares = (app) => {
 
@@ -12,6 +13,7 @@ const middlewares = (app) => {
         console.log(err)
     })
     app.use(indexRouter);
+    app.use(errorHandler);
 }
 
 export default middlewares;
