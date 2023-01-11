@@ -6,9 +6,13 @@ class UserController{
 
 
 
-    async(req, res) {
-        
-        const createUser = User.create({ name: req.body.name, email: req.body.email });
+    async createUser(req, res) {
+       
+        const create = User.create({ name: req.body.name, email: req.body.email, password: bcrypt.hash(req.body.password, 10) }).then(val => {
+            return res.status(201).send({ status: true, message: 'user create successfully'});
+        }).catch(err => {
+            return res.status(500).send({status:false,message:`${err}`})
+        })
     }
 }
 
