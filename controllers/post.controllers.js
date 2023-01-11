@@ -6,7 +6,7 @@ class PostControllers{
         newPost.then(result => {
             return res.status(201).send({status:true, messge:'post created'})
         }).catch((err)=>{
-            return res.status(500).send({status:false, messge:err})
+            return res.status(500).send({status:false, messge:`${err}`})
         })
         
     }
