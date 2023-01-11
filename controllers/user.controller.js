@@ -14,6 +14,22 @@ class UserController{
             return res.status(500).send({status:false,message:`jj${err}`})
         })
     }
+    async logInUser(req, res) {
+        const getUser = User.findOne({ where: { email: req.body.email } }).then(val => {
+            if (val === null) {
+                return res.status(200).send({ message: 'user does not exist' });
+            }
+            const confirmPassword = bcrypt.compareSync(req.body.password,val.password);
+
+            if (!confirmPassword) {
+                return res.status(403).send({ status: false, message: 'email or password is incorrecct' });
+            }
+            return res.status(200).send({status:true, message:'logged in successfully', data:val})
+        }).catch(err=>{
+            return res.status(500).send({status:false,message:`${err}`})
+        })
+        
+    }
 }
 
 

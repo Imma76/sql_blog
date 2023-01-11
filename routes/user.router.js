@@ -5,7 +5,7 @@ const userRoute = express.Router();
 
 
 userRoute.post('/',userController.createUser);
-userRoute.post('/login');
+userRoute.post('/login',userController.logInUser);
 
 
 export default userRoute;
