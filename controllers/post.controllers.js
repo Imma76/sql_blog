@@ -1,7 +1,14 @@
-import Post from '../models/post.model.js'
+import Post from '../models/post.model.js';
+import { validationResult } from 'express-validator';
+
+
 class PostControllers{
     async createNewPost(req, res) {
         console.log(req.body);
+        const error = validationResult(req);
+        if(!error.isEmpty()){
+            return res.status(500).send({status:false,message:`${error.array()[0].msg}`})
+        }
         const newPost = Post.create({ title: req.body.title, content: req.body.content, category: req.body.category });
         newPost.then(result => {
             return res.status(201).send({status:true, messge:'post created'})
