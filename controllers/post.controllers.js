@@ -32,7 +32,10 @@ class PostControllers{
         })
     }
     async deletePost(req, res) {
-        const deletePost = Post.findOne({where:{id:req.params.id}}).then(val=>{
+        const deletePost = Post.findOne({ where: { id: req.params.id } }).then(val => {
+            if (val === null) {
+                return res.status(200).json({status:true,message:'post does not exist'})
+            }
             val.destroy().then(value=>{
                 return res.status(200).send({status:true, message:'post deleted'})
             })
