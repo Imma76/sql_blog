@@ -10,7 +10,7 @@ const middlewares = (app) => {
     // User.hasMany(Post)
     app.use(express.json());
     app.use(express.urlencoded({ extended:false }));
-    sequelize.sync().then(result => {
+    sequelize.sync({force:true}).then(result => {
         // console.log(result)
     }).catch((err)=>{
         console.log(err)

@@ -20,6 +20,13 @@ const Post = sequelize.define('Post', {
     category: {
         type: Sequelize.STRING,
                 allowNull: false,
+    },
+    image:{
+        type: Sequelize.STRING,
+        
+    },
+    likes:{
+        type:Sequelize.INTEGER
     }
 });
 
