@@ -10,6 +10,10 @@ const Comment = sequelize.define('Comment', {
         type:Sequelize.INTEGER,
         allowNull:false
     },
+    comment: {
+        type: Sequelize.STRING,
+        allowNull:false
+    }
 
 })
 
