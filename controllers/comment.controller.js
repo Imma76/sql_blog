@@ -18,6 +18,10 @@ class CommentController{
         errorHandler(req,res);
         const deleteComment = Comment.findOne({ where: { id: req.params.id } }).then(val => {
             val.destroy().then(val => {
+
+                if(val ===null){
+                    return res.status(500).json({status:true,message:'comment does not exist'});
+                }
                  return res.status(200).json({status:true, message:'comment deleted sucessfully'})
             }).catch((err)=>{
                 return res.status(500).json({status:false, message:`${err}`})
