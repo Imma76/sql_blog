@@ -27,12 +27,12 @@ class CommentController{
     }
 
     async getCommentbyId(req, res) {
-        const comment = Comment.findOne({ where: { id: req.params.id } }).then(val => {
+        const comment = Comment.findOne({ where: { postId: req.params.id } }).then(val => {
             return res.status(200).json({status:true,data:val})
         }).catch((err)=>{
             return res.status(500).json({statuss:false, message:`${err}`})
         });
-        
+
         
     }
 
@@ -46,3 +46,6 @@ class CommentController{
 
 
 }
+
+
+export default new CommentController();
