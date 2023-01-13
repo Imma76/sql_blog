@@ -1,6 +1,6 @@
 import Post from '../models/post.model.js';
 import { validationResult } from 'express-validator';
-
+import Sequelize  from 'sequelize';
 
 class PostControllers{
     async createNewPost(req, res) {
@@ -40,6 +40,20 @@ class PostControllers{
                 return res.status(200).send({status:true, message:'post deleted'})
             })
         })
+    }
+    async getPostByPage(req, res) {
+        console.log(`hhh${req.params.page}`);
+        const fetchPost = Post.findAll({ offset:(parseInt(req.params.page) - 1 ) * 2, // set the offset according your use case
+        limit: 2 , attributes: {
+    //         include: [
+    //   // correct a table name and fields if needed
+    //   [Sequelize.literal("(SELECT COUNT(*) FROM Related where Related.elementId=Elements.id)"), "related_total"]
+    //       ]
+          }, }).then(val=>{
+              return res.status(200).json({ status: true, message: val });
+          }).catch(err=>{
+            return res.status(500).json({status:false,message:`${err}`})
+          })
     }
 }
 

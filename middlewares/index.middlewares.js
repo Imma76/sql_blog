@@ -11,7 +11,7 @@ const middlewares = (app) => {
     app.use(express.json());
     app.use(express.urlencoded({ extended:false }));
     sequelize.sync(
-      //  { force: true }
+       // { force: true }
     ).then(result => {
         // console.log(result)
     }).catch((err)=>{

@@ -13,6 +13,7 @@ postRouter.post('/', [
 ], postControllers.createNewPost);
 postRouter.get('/:id', postControllers.findPostById);
 postRouter.get('/', postControllers.getAllPosts);
+postRouter.get('/page/:page', postControllers.getPostByPage);
 postRouter.delete('/:id', postControllers.deletePost);
 
 
