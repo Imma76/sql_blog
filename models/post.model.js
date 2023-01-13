@@ -27,6 +27,10 @@ const Post = sequelize.define('Post', {
     },
     likes:{
         type:Sequelize.INTEGER
+    },
+    authorId: {
+        type:Sequelize.INTEGER,
+        allowNull:false,
     }
 });
 
