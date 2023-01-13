@@ -7,7 +7,7 @@ import Post from "../models/post.model.js";
 
 
 const middlewares = (app) => {
-     User.hasMany(Post)
+    // User.hasMany(Post)
     app.use(express.json());
     app.use(express.urlencoded({ extended:false }));
     sequelize.sync().then(result => {

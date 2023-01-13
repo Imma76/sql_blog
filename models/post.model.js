@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import sequelize from '../config/db.config.js';
+import User from "./user.model.js";
 
 const Post = sequelize.define('Post', {
     id: {
@@ -21,5 +22,7 @@ const Post = sequelize.define('Post', {
                 allowNull: false,
     }
 });
+
+Post.belongsTo(User)
 
 export default Post;

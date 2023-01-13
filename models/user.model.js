@@ -1,5 +1,6 @@
 import  Sequelize  from "sequelize";
 import sequelize from "../config/db.config.js";
+import Post from "./post.model.js";
 
 const User = sequelize.define('User', {
     id: {
@@ -21,4 +22,7 @@ const User = sequelize.define('User', {
 
 })
 
+
+//User.hasMany(Post);
+ 
 export default User;
