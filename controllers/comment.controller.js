@@ -12,7 +12,7 @@ class CommentController{
 
 
     async deleteCommentById(req, res) {
-        const deleteComment = Comment.findOne({ where: { id: req.params.postId } }).then(val => {
+        const deleteComment = Comment.findOne({ where: { id: req.params.id } }).then(val => {
             val.destroy().then(val => {
                  return res.status(200).json({status:true, message:'comment deleted sucessfully'})
             }).catch((err)=>{
@@ -27,11 +27,20 @@ class CommentController{
     }
 
     async getCommentbyId(req, res) {
+        const comment = Comment.findOne({ where: { id: req.params.id } }).then(val => {
+            return res.status(200).json({status:true,data:val})
+        }).catch((err)=>{
+            return res.status(500).json({statuss:false, message:`${err}`})
+        });
         
     }
 
     async getComments(req, res) {
-        
+        const comment = Comment.findAll().then(val => {
+            return res.status(200).json({status:true,data:val})
+        }).catch((err)=>{
+            return res.status(500).json({statuss:false, message:`${err}`})
+        });
     }
 
 
