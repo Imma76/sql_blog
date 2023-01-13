@@ -5,7 +5,7 @@ const commentRoutes = express.Router();
 
 commentRoutes.post('/',commentController.postComment);
 commentRoutes.get('/:id', commentController.getCommentbyId);
-commentRoutes.delete('/:id',commentController.deleteCommentyId);
+commentRoutes.delete('/:id',commentController.deleteCommentById);
 
 
 export default commentRoutes;
